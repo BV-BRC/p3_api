@@ -5,8 +5,10 @@ var httpParams = require('../middleware/http-params')
 var debug = require('debug')('p3api-server:route/content')
 var fs = require('fs-extra')
 var Path = require('path')
+const reqRecorder = require('../middleware/ReqRecorder')('/routes/content')
 
 router.use(httpParams)
+router.use(reqRecorder)
 
 var contentFolder = config.get('contentDirectory')
 
