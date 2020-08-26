@@ -52,6 +52,7 @@
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.1.0",
     "mocha": "^7.2.0",
+    "pino-elasticsearch": "^5.3.0",
     "pm2": "^4.4.0",
     "pm2-logrotate": "^2.7.0"
   }

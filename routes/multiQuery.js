@@ -7,12 +7,14 @@ var debug = require('debug')('p3api-server:route/multiQuery')
 var httpParams = require('../middleware/http-params')
 var authMiddleware = require('../middleware/auth')
 var distributeQuery = require('../distributeQuery')
+const reqRecorder = require('../middleware/ReqRecorder')('/routes/multiQuery')
 
 router.use(httpParams)
 router.use(authMiddleware)
 
 router.post('*', [
   bodyParser.json({extended: true}),
+  reqRecorder,
   function (req, res, next) {
     debug('req.body: ', req.body)
     var defs = []

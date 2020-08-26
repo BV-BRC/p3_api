@@ -8,6 +8,7 @@ var PublicDataTypes = require('../middleware/PublicDataTypes')
 var authMiddleware = require('../middleware/auth')
 var APIMethodHandler = require('../middleware/APIMethodHandler')
 var reqCounter = require('../middleware/ReqCounter')
+const reqRecorder = require('../middleware/ReqRecorder')('/routes/JBrowse')
 var httpParams = require('../middleware/http-params')
 var Limiter = require('../middleware/Limiter')
 
@@ -99,6 +100,7 @@ function generateTrackList (req, res, next) {
 router.use(httpParams)
 router.use(authMiddleware)
 router.use(PublicDataTypes)
+router.use(reqRecorder)
 
 router.get('/genome/:id/trackList', [
   function (req, res, next) {
