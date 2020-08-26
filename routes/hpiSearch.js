@@ -30,6 +30,7 @@ var httpParams = require('../middleware/http-params') // checks for stuff starti
 var authMiddleware = require('../middleware/auth')
 var APIMethodHandler = require('../middleware/APIMethodHandler')
 var Limiter = require('../middleware/Limiter')
+const reqRecorder = require('../middleware/ReqRecorder')('/routes/hpiSearch')
 
 // constants and magic words
 const INPUT_TYPE_GENE = 'gene'

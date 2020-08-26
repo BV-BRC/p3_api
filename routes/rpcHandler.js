@@ -2,6 +2,7 @@ var bodyParser = require('body-parser')
 var rpcMethods = require('../rpc')
 var when = require('promised-io/promise').when
 var debug = require('debug')('p3api-server:route/rpcHandler')
+const reqRecorder = require('../middleware/ReqRecorder')('/routes/rpcHandler')
 
 module.exports = [
   bodyParser.json({type: ['application/jsonrpc+json'], limit: '30mb'}),
@@ -43,6 +44,7 @@ module.exports = [
       next('route')
     }
   },
+  reqRecorder,
   function (req, res, next) {
     // debug("req.call_method: ", req.call_method);
     // debug("MethodDef: ", rpcMethods[req.call_method]);
