@@ -7,6 +7,7 @@ var authMiddleware = require('../middleware/auth')
 var querystring = require('querystring')
 var archiver = require('archiver')
 var path = require('path')
+const reqRecorder = require('../middleware/ReqRecorder')('/routes/download')
 
 router.use(httpParams)
 router.use(authMiddleware)
@@ -70,6 +71,8 @@ router.use(function (req, res, next) {
   debug('req.sourceDataType: ', req.sourceDataType)
   next()
 })
+
+router.use(reqRecorder)
 
 router.use([
   function (req, res, next) {

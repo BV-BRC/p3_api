@@ -45,6 +45,7 @@ var PATRIC_URL = config.get('distributeURL')
 
 router.use(httpParams)
 router.use(authMiddleware)
+router.use(reqRecorder)
 
 // handle GET hpi/search/
 // Not sure what to return here
